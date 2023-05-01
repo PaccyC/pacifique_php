@@ -1,7 +1,7 @@
 
 <?php
 include "connection.php";
-
+include "export.php"
 ?>
 <html lang="en">
 <head>
@@ -60,9 +60,15 @@ include "connection.php";
         </tr>';
     }
    }
+
+
    ?>
+
   </tbody>
 </table> 
 </div>
+<form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="post">					
+				<button type="submit" id="export_csv_data" name='export_csv_data' value="Export to CSV" class="btn btn-info">Export to CSV</button>
+			</form>
 </body>
 </html>
