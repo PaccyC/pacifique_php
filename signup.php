@@ -2,12 +2,12 @@
 
 include 'connection.php';
 if(isset($_POST['submit'])){
-
+  $id=8;
     $first_name=$_POST['fname'];
     $last_name=$_POST['lname'];
     $email=$_POST['email'];
     $password=$_POST['password'];
-    $sql="INSERT INTO `student` VALUES('$first_name','$last_name','$email','$password')";
+    $sql="INSERT INTO `student` VALUES($id,'$first_name','$last_name','$email','$password')";
 
     $result=mysqli_query($conn,$sql);
 

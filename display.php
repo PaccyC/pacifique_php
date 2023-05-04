@@ -29,7 +29,7 @@ include "export.php"
       <th scope="col">First Name</th>
       <th scope="col">Last Name</th>
       <th scope="col">Email</th>
-      <th scope="col">Password</th>
+ 
       <th scope="col">OPERATIONS</th>
 
     </tr>
@@ -44,14 +44,14 @@ include "export.php"
         $fname=$row["fname"];
         $lname=$row["lname"];
         $email=$row["email"];
-        $password=$row["password"];
+   
 
         echo '<tr>
         <td scope="row">'.$id.'</td>
         <td scope="row">'.$fname.'</td>
         <td scope="row">'.$lname.'</td>
         <td scope="row">'.$email.'</td>
-        <td scope="row">'.$password.'</td>
+     
         <td>
         <button class="btn btn-primary"><a href="update.php? updateid='.$id.'" class="text-light">Update</a></button>
         <button class="btn btn-danger"><a href="delete.php? deleteid='.$id.'" class="text-light">Delete</a></button>
