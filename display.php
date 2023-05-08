@@ -1,7 +1,13 @@
 
 <?php
 include "connection.php";
-include "export.php"
+include "export.php";
+
+session_start();
+
+if(!isset($_SESSION["email"])){
+  header("Location:login.php");
+}
 ?>
 <html lang="en">
 <head>

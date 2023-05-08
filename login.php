@@ -1,30 +1,3 @@
-<?php
-session_start();
-include 'connection.php';
-
-if(isset($_POST['submit'])) {
-    $email = $_POST['email'];
-    $password = $_POST['password'];
-    
-    $sql = "SELECT * FROM `student` WHERE email='$email'";
-    $result = mysqli_query($conn, $sql);
-
-    if(mysqli_num_rows($result) == 1) {
-        $row = mysqli_fetch_assoc($result);
-        if(password_verify($password, $row['password'])) {
-            $_SESSION['email'] = $email;
-            header("Location: display.php");
-            exit();
-        } else {
-            header("Location: login.php?error=Invalid password");
-            exit();
-        }
-    } else {
-        header("Location: login.php?error=Invalid email");
-        exit();
-    }
-}
-?>
 
 <!doctype html>
 <html lang="en">
@@ -40,10 +13,7 @@ if(isset($_POST['submit'])) {
   </head>
   <body>
     <div class="container">
-      <form class="row g-3" action="login.php" method="POST">
-        <?php if(isset($_GET['error'])) { ?>
-        <p class="alert alert-danger"><?php echo $_GET['error']; ?></p>
-        <?php } ?>
+      <form class="row g-3" method="POST">
         <div class="col-md-6">
           <label for="inputEmail4" class="form-label">Email</label>
           <input type="email" class="form-control" id="inputEmail4" name="email" autocomplete="off" required>
@@ -62,3 +32,28 @@ if(isset($_POST['submit'])) {
      crossorigin="anonymous"></script>
   </body>
 </html>
+<?php
+session_start();
+include 'connection.php';
+
+if(isset($_POST['submit'])) {
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+    
+    $select = "SELECT * FROM `student` WHERE email='$email'";
+    $run = mysqli_query($conn, $select);
+
+   $row_user=mysqli_fetch_array($run);
+   $db_email=$row_user["email"];
+   $db_password=$row_user["password"];
+   if($email== $db_email){
+    header("Location:display.php");
+   }
+   else{
+    echo "Invalid email or passeord";
+   }
+
+   $_SESSION["email"]=$db_email;
+
+}
+?>
